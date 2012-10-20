@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+
+<script type='text/javascript'>
+
+/***********************************************
+* Carousel Slideshow II- By Harry Armadillo (http://www.codingforums.com/showthread.php?t=58814)
+* Visit Dynamic Drive at http://www.dynamicdrive.com/ for full source code
+* Please keep this notice intact
+***********************************************/
+
+function carousel(params){
+  if(!(params.width>0 && isFinite(params.width)))params.width=100;
+  if(!(params.height>0 && isFinite(params.height)))params.height=100;
+  if(!(params.sides>2 && isFinite(params.sides)))params.sides=4;
+  if(!(params.steps>0 && params.steps<100 && isFinite(params.steps)))params.steps=20;
+  if(!(params.speed>0 && isFinite(params.speed)))params.speed=8;
+  if(!(params.image_border_width>=0 && isFinite(params.image_border_width)))params.image_border_width=0;
+  if(isFinite(params.id)||!params.id)params.id='bad_id_given_'+Math.random();
+  
+  document.write("<div style='position:relative;overflow:hidden;' id='"+params.id.replace(/[^a-zA-Z0-9]+/g,'_')+"'></div>");
+  var cdiv=document.getElementById(params.id.replace(/[^a-zA-Z0-9]+/g,'_'))
+  cdiv.style.width=params.width+'px';
+  cdiv.style.height=params.height+'px';
+  cdiv.style.border=params.border;
+  cdiv.style.position='relative';
+  cdiv.style.overflow='hidden';
+  cdiv.title=params.id;
+    
+  var counter=0,spinning=true,interval=Math.floor(60000/params.sides/params.steps/params.speed)-5;
+  interval=isNaN(interval)?200:interval;
+  var img_position=[],images=[],img_dimension=[];
+  var img_index=params.images.length+1,img_index_cap=2*params.images.length;
+  var faces=Math.ceil(params.sides/2), dimension, direction, targ, attr, faraway;
+
+  function init(){
+    if(params.direction=="left" || params.direction=="right"){
+      direction=params.direction;
+      dimension="width";
+      }
+    else if(params.direction=="top" || params.direction=="bottom"){
+      direction=params.direction;
+      dimension="height";
+      }
+    else {
+      direction="left";
+      dimension="width";
+      }      
+    faraway=(direction=="left"||direction=="top")?'-20000px':'20000px';
+    cdiv.style[dimension]=params[dimension]/(params.size_mode=='image'?Math.sin(Math.PI/params.sides):1)+'px';
+    var img=new Image();
+    img.style.position='absolute';
+    img.style[direction]=faraway;
+    img.style.width=params.width-2*params.image_border_width+'px';
+    img.style.height=params.height-2*params.image_border_width+'px';
+    img.style.border=(params.image_border_width||0)+'px solid '+params.image_border_color;
+  
+    for(var i=0;i<params.images.length;i++){
+      images[i]=img.cloneNode(true);
+      images[i].src=params.images[i];
+      if(params.links && params.links[i] && params.links[i]!=''){
+        targ=params.lnk_targets && params.lnk_targets[i]||params.lnk_base||'new';
+        if(targ=="_blank"){
+          attr=(params.lnk_attr && params.lnk_attr[i])?",'"+params.lnk_attr[i]+"'":"";
+          images[i].onclick=new Function("window.open('"+params.links[i]+"','"+targ+"'"+attr+")");
+          }
+        else if(targ.substr(0,1)=="_"){
+          images[i].onclick=new Function(targ.substr(1)+".location='"+params.links[i]+"'");
+          }
+        else{
+          attr=(params.lnk_attr && params.lnk_attr[i])?",'"+params.lnk_attr[i]+"'":"";
+          images[i].onclick=new Function("var t='"+targ+"';if(window[t]){try{window[t].close()}catch(z){}}window[t]=window.open('"+params.links[i]+"',t"+attr+");window[t].focus()");
+          }
+        images[i].style.cursor=document.all?'hand':'pointer';
+        }
+
+      if(params.titles && params.titles[i] && params.titles[i]!='')
+        images[i].title=params.titles[i];
+      if(document.all)
+        images[i].alt=images[i].title;
+      images[i+params.images.length]=images[i];
+      if(params.images.length==faces)
+        images[i+2*params.images.length]=images[i];
+      cdiv.appendChild(images[i]);
+      }
+  
+    var face_size=params.size_mode=='image'?params[dimension]:params[dimension]*Math.sin(Math.PI/params.sides);
+    var face_offset=params[dimension]*Math.cos(Math.PI/params.sides)/(params.size_mode=='image'?Math.sin(Math.PI/params.sides):1)/2-.5;
+    var pi_piece=2*Math.PI/params.steps/params.sides;
+    for(i=0;i<=params.steps*faces;i++){
+      img_dimension[i]=face_size*Math.sin(pi_piece*i);
+      img_position[i]=(i<params.steps*params.sides/2)?Math.floor(params[dimension]/2/(params.size_mode=='image'?Math.sin(Math.PI/params.sides):1)-face_offset*Math.cos(pi_piece*i)-img_dimension[i]/2)+'px':faraway;
+      img_dimension[i]=img_dimension[i]-2*params.image_border_width>1?Math.ceil(img_dimension[i])-2*params.image_border_width+'px':'1px';
+      }
+    }
+  init();
+
+  cdiv.rotate = function(){
+    setTimeout('document.getElementById("'+cdiv.id+'").rotate()',interval);
+    if(!spinning) return;
+    if(++counter>=params.steps){
+      counter=0;
+      if(++img_index>=img_index_cap)
+        img_index=params.images.length;
+      }
+    images[img_index-faces].style[direction]=faraway;
+    for(var i=faces-1;i>=0;i--){
+      images[img_index-i].style[direction]=img_position[counter+i*params.steps];
+      images[img_index-i].style[dimension]=img_dimension[counter+i*params.steps];
+      }
+    }
+  cdiv.onmouseover=function(){
+    spinning=false;
+    }
+  cdiv.onmouseout=function(){
+    spinning=true;
+    }
+  setTimeout('document.getElementById("'+cdiv.id+'").rotate()',100);
+  }
+</script>
+
+
+</head>
+
+<body>
+
+
+
+<script type='text/javascript'>
+carousel({id:'Company pics', //Enter arbitrary but unique ID of this slideshow instance
+          border:'',
+          size_mode:'image', //Enter "carousel" or "image". Affects the width and height parameters below.
+          width:350, //Enter width of image or entire carousel, depending on above value
+          height:380, //Enter height of image or entire carousel, depending on above value
+          sides:6, //# of sides of the carousel. What's shown = sides/2. Even integer with sides/2< total images is best
+          steps:50, //# of animation steps. More = smoother, but more CPU intensive
+          speed:5, //Speed of slideshow. Larger = faster.
+          direction:'left', //Direction of slideshow. Enter "top", "bottom", "left", or "right"
+          images:['Image Slider/photo1.png',
+                  'Image Slider/photo2.jpg',
+                  'Image Slider/photo3.jpg',
+				  'Image Slider/photo4.png',
+				  'Image Slider/photo5.jpg'],
+          links: ['#', //enter link URLs, or for no links, empty array instead (links :[])
+				  '#',
+                  '#',
+				  '#',
+				  '#'],
+          titles:['pic #1',
+				  'pic #2',
+				  'pic #3',
+				  'pic #4',
+				  'pic #5'],
+          image_border_width:1,
+          image_border_color:'blue'
+          });
+</script>
+</body>
+</html>

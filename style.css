@@ -1,0 +1,117 @@
+body {padding:0; margin:0; height:100%; background:url(image/metal2.png) top right repeat-x; float:left; width:100%;font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px;}
+.center { text-align:center;}
+.left { text-align:left}
+a { color:#1570AA }
+#wrapper{ margin:0 auto; width:940px; /*height:500px;*/ margin-top:20px;}
+#main_top{ background:url(image/main_top.png) no-repeat; float:left; height:20px; width:940px;}
+#main_bottom{ background:url(image/main_bottom.png) no-repeat; float:left; height:20px; width:940px;}
+#main_content{ background:url(image/main_content.png); background-repeat:repeat-y; float:left;width:934px; margin-left:2px; margin-right:2px; border-left:solid 1px #999999;border-right:solid 1px #999999; }
+#site_name {color:#000000; float:left;margin-left:18px; width:900px;}
+#menu{ background:url(image/menu_bg3.png) no-repeat; float:left; height:39px; width:902px; margin-left:18px; margin-bottom:10px; }
+#menu ul{ list-style:none;float:left; padding:0px; margin:0px ; width:895px;}
+#menu ul li { float:left; padding:6px; text-align:center; width:90px; margin-left:7px;}
+
+#menu a { text-decoration:none; vertical-align:top; font-size:16px; text-transform:capitalize; font-weight:bold; color:#FFFFFF }
+
+#menu a:hover{ color:#000000}
+/*#menu  li:hover { background:url(image/hover_bg.png) repeat-x; height:28px; color:#FFFFFF; overflow:hidden}
+*/
+
+#scrolling_news { width:888px; height:38px; float:left; margin-left:22px;background:url(image/news_bg.png) no-repeat; padding:5px; text-align:center; }
+
+.fontcolor { color:#1670B5; font-size:19px; font-weight:bold}
+.content_font_color { color:#6d6d6a; text-align:justify; }
+a { text-decoration:none;}
+
+#search { float:right; margin-right:20px;}
+#submit { background:url(image/btn001.gif) no-repeat; height:21px; width:79px; border:0px; color:#FFFFFF;  font-size:15px; text-transform:capitalize}
+
+#midcontent {  width:888px; float:left; margin-left:20px; padding:5px; text-align:center; }
+#mid_main_content {  width:888px; float:left; margin-left:20px; padding:5px; text-align:center; }
+#mid_bottom_content{width:888px; float:left; margin-left:20px; padding:5px; text-align:center; }
+
+
+#gallery { width:600px; float:left; height:200px; overflow:hidden;}
+
+#vision {height:50px; width:600px; margin-bottom:10px;background:url(image/vision.png) no-repeat;}
+
+
+#side_menu{ width:275px; float:left; margin-left:10px; height:200px;}
+
+#notice_board {background:url(image/1.png) no-repeat; float:left; height:205px; width:275px; color:#666666; padding:5px; text-align:left; font-size:12px;}
+
+#notice_board_bottom{background:url(image/3.png) no-repeat; float:left; height:169px; width:275px; color:#666666; padding:10px; text-align:left; font-size:15px; padding-top:10px;}
+
+
+/*#notice_board_bottom{background:url(image/1.png) no-repeat; float:left; height:200px; width:275px; color:#666666; padding:10px; text-align:left; font-size:15px; padding-top:10px;}*/
+
+#download { background:url(image/download_bg.png) no-repeat; float:left;height:100px; width:275px; color:#666666; text-align:center; padding-top:5px; margin-left:50px; margin-right:50px;}
+#download1 { background:url(image/download_bg_inner.png) no-repeat; float:left;height:100px; width:275px; color:#666666; text-align:center; padding-top:5px; ; }
+#download a { text-decoration:none; font-size:18px; border:1px;}
+/*------------------------logo-------------------------------*/
+/*-----------------------------------------------------------------gallery------------------------------------------------------------------------
+*/
+#slider ul, #slider li,
+	#slider2 ul, #slider2 li{
+		margin:0;
+		padding:0;
+		list-style:none;
+		}
+	#slider2{margin-top:1em;}
+	#slider li, #slider2 li{ 
+		/* 
+			define width and height of list item (slide)
+			entire slider area will adjust according to the parameters provided here
+		*/ 
+		width:600px;
+		height:200px;
+		overflow:hidden; 
+		}	
+	
+	
+img { border:0;}
+/*------------------------------------------------------------------gallery ends---------------------------------------------------------------------*/
+.common_font{ font-size:12px; color:#4973AF; font-weight:bold;}
+#main_datas{ width:932px; float:left; padding-top:5px;}
+#sidebar { width:223px; float:left; text-align:justify }
+#content { width:650px;float:right; padding:10px; padding-top:0px;text-align:justify ; padding-bottom:0px;font-size:12px;}
+.latestnews{ background:url(image/header_blue.png) no-repeat; text-align:center; height:40px; padding-top:5px; float:left; width:275px; color:#FFFFFF; font-size:12px;font-weight:bold} 
+
+.latestnews1{ background:url(image/common_header.png) no-repeat; text-align:center; height:28px; padding-top:5px; float:left; width:223px; color:#FFFFFF;font-size:12px;font-weight:bold} 
+.latestnews2{ background:url(image/header_blue.png) no-repeat; text-align:center; height:30px; padding-top:1px;  width:275px; color:#FFFFFF; font-size:16px;border:1px solid #CC3333;font-weight:bold} 
+.latestnews3{ background:url(image/header_blue.png) no-repeat; text-align:center; height:28px; padding-top:5px; float:left; width:275px; color:#FFFFFF; font-size:12px;font-weight:bold} 
+.latestnews4{ background:url(image/common_header.png) no-repeat; text-align:center; height:30px; padding-top:5px;  width:223px; color:#FFFFFF; font-size:12px;font-weight:bold; *margin-left:80px;*margin-right:20px; *padding-left:5px;*float:left;} 
+
+/*#download6 { background:url(image/common_bg2.png) no-repeat; height:150px; width:275px; color:#666666; text-align:center; padding-top:4px; margin-left:80px; margin-right:20px;padding-left:5px; background-color:#336699;background-position:center}*/
+#download6 { background:url(image/common_bg2.png) no-repeat; height:190px; width:275px; color:#666666; text-align:left; padding-top:4px; margin-left:80px; margin-right:20px;padding-left:5px;}
+@media screen and (-webkit-min-device-pixel-ratio:0) 
+{
+#download6 { background:url(image/common_bg2.png) no-repeat; height:190px; width:275px; color:#666666; text-align:left; padding-top:4px; margin-left:80px; margin-right:20px;padding-left:5px;background-position:center}
+.downlds{margin-left:30px;}
+}
+
+.common_bg3 {background:url(image/common_bg2.png) no-repeat; float:left; height:200px; width:223px !important; color:#666666;  padding-top:2px; padding-bottom:3px;font-size:12px; text-align:justify; border:solid 1px #00CCCC;}
+.common_bg2 {background:url(image/common_bg2.png) no-repeat; float:left; height:190px; width:223px !important; color:#666666; padding-left:5px; padding-top:2px; padding-bottom:3px;font-size:12px; text-align:left; border:solid 1px #FFFFFF;}
+.common_bg {background:url(image/common_bg2.png) no-repeat; float:left; height:180px; max-width:223px !important;width:223px ;color:#666666;  font-size:12px;text-align:justify;}
+.upcomevent {background:url(image/common_bg2.png) no-repeat; float:left; height:190px; max-width:223px !important;width:223px ;color:#666666;  font-size:12px;text-align:left; margin-left:3px;}
+.news_content{ float:left; width:190px; padding:5px;}
+.common_bg4 {background:url(image/common_bg2.png) no-repeat; float:left; height:180px; width:223px ;color:#666666;  font-size:12px;text-align:justify;padding-right:2px;}
+.news_content{ float:left; width:190px; padding:5px;}
+/*---------------------------------------footer-------------------------------------------*/
+#footer
+{
+float:left;
+width:940px;
+height:100px;
+margin-top:5px;
+}
+#footer_content
+{
+text-align:center;
+margin:0 auto;
+}
+/*.footer_menu{margin-left:170px;}*/
+.footer_menu{margin-left:105px;}
+.footer_menu a { font-size:12px; color:#1570AA; text-decoration:none; font-weight:bold;
+
+}
